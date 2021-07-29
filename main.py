@@ -1,8 +1,3 @@
-# This is a sample Python script.
-
-# test
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 from discord.ext import commands
 from discord.utils import get
 from discord import FFmpegPCMAudio, AudioSource

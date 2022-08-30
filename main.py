@@ -1,8 +1,3 @@
-# This is a sample Python script.
-
-# testg
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 from discord.ext import commands
 from discord import Intents
 from discord.utils import get
@@ -32,7 +27,6 @@ YDL2_OPTIONS = {'format': "bestvideo/best",
 			   'cookiefile': COOKIE,
 			   'quiet': 'True'}
 
-guild_vitya = {}
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -429,22 +423,12 @@ with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
 
 	@bot.command(aliases=['p', 'pl', 'з', 'зд', 'здфй'])
 	async def play(ctx, *args):
-		vitya = ctx.guild.get_member(252788456248442880)
-		if vitya is None:
-			print("Can't get by ID!")
-		if vitya is not None:
-			guild_vitya[ctx.guild.id] = vitya
-		elif ctx.message.author.id == 252788456248442880:
-			guild_vitya[ctx.guild.id] = ctx.message.author
-		if ctx.guild.id not in guild_vitya:
-			return
-		if ctx.message.author.id != 252788456248442880:
-			guild_id = ctx.guild.id
-			if guild_id in delay_time:
-				if time() - delay_time[guild_id] < 15:
-					await ctx.send("Не надо так...")
-					return
-			delay_time[guild_id] = time()
+		guild_id = ctx.guild.id
+		if guild_id in delay_time:
+			if time() - delay_time[guild_id] < 15:
+				await ctx.send("Не надо так...")
+				return
+		delay_time[guild_id] = time()
 	
 			
 		if len(args) == 0:
